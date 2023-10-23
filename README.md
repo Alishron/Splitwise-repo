@@ -1,1 +1,3 @@
 # Splitwise-repo
+Hi WEC , I am Alish Sahdev, a second-year student at NITK and an EEE chapter member.
+Speaking of myself, I'm new to android development and would like to learn more from some knowledgeable veterans like you guys. To date, I've created TIC TAC TOE, which you can see on my github. I chose the splitwise clone approach because other approaches rely on machine learning, a field in which I'm not particularly skilled. So I was left with this challenging duty, which I was able to do thanks to my instructors @Muthukumar (+91 8921472523) and @Harshit (+91 8583905686). I sincerely hope you enjoy my work as a novice.
