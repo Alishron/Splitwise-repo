@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#3E4A57"
+    android:id="@+id/fragmentofgroup"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Accounts">
+
+ <com.google.android.material.floatingactionbutton.FloatingActionButton
+     android:layout_width="wrap_content"
+     android:layout_gravity="end|bottom"
+     android:layout_margin="26dp"
+     app:fabSize="normal"
+     android:id="@+id/fab"
+     android:src="@drawable/expnse"
+     android:elevation="6dp"
+     android:backgroundTint="@color/Greenmy"
+     android:layout_height="wrap_content"
+     android:contentDescription="@string/app_name" />
+
+
+
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="100sp"
+      android:id="@+id/textfin"
+      android:textColor="@color/white"
+      ></TextView>
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
