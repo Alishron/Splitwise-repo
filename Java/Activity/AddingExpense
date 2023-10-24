@@ -1,0 +1,62 @@
+package com.example.splitwiseclone;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.EditText;
+
+import java.util.ArrayList;
+
+public class adding_expenses extends AppCompatActivity {
+Toolbar tool;
+EditText editText;
+AutoCompleteTextView autoc;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_adding_expenses);
+        autoc=findViewById(R.id.autocom);
+        tool=findViewById(R.id.tool);
+        editText=findViewById(R.id.total_money);
+        setSupportActionBar(tool);
+        if(getSupportActionBar()!=null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+        getSupportActionBar().setTitle("Add expenses");
+        ArrayList<String> arr = new ArrayList<>();
+        addToArray(arr);
+        ArrayAdapter<String> ard = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,arr);
+        autoc.setAdapter(ard);
+    autoc.setThreshold(1);
+    }
+
+    private void addToArray(ArrayList<String> arr) {
+        arr.add("ALISH"); arr.add("Dummy_1"); arr.add("liza"); arr.add("Sahdev"); arr.add("joy"); arr.add("splitwise_owner");
+        arr.add("JAmes");arr.add("michael");arr.add("Joseph");arr.add("david");arr.add("thomas");arr.add("charle");
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        new MenuInflater(this).inflate(R.menu.toolbar_add_expesn,menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+   public void back(View view){
+       String pname= autoc.getText().toString();
+       String finmoney =  editText.getText().toString();
+          Intent in = new Intent(this,navmain.class);
+       ///   navmain nano = new navmain();
+       ///  in.putExtra("key", pname);
+       ///  in.putExtra("key1", finmoney);
+
+startActivity(in);
+   }
+}

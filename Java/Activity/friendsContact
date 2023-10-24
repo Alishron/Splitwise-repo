@@ -1,0 +1,65 @@
+package com.example.splitwiseclone;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
+import android.Manifest;
+import android.content.ContentResolver;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.util.Log;
+import android.widget.TextView;
+import android.widget.VideoView;
+
+import java.util.ArrayList;
+
+public class friendscontact extends AppCompatActivity {
+TextView tv_phone;
+VideoView videoView;
+ArrayList<String> arrayList;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_friendscontact);
+
+tv_phone=findViewById(R.id.tv_phonebook);
+arrayList= new ArrayList<>();
+if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.M && checkSelfPermission(Manifest.permission.READ_CONTACTS)!= PackageManager.PERMISSION_GRANTED){
+    requestPermissions(new String[]{Manifest.permission.READ_CONTACTS},0);
+
+}
+else {
+    getcontact();
+}
+    }
+
+    private void getcontact() {
+    Cursor cursor= getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,null,null,null,null);
+    while (cursor.moveToNext()){
+        int nme = (cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
+        int numr = (cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+        String name=cursor.getString(nme);
+        String number=cursor.getString(numr);
+
+        arrayList.add(name +"\n"+ number);
+        tv_phone.setText(arrayList.toString());
+
+    }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 1) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                getcontact();
+            }
+        }
+    }
+}
